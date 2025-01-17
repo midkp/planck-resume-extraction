@@ -1,7 +1,7 @@
 from fastapi import FastAPI, APIRouter
 from app.controller.year_controller import is_leap_year, is_prime
 from app.controller.string_controller import split_and_join
-from app.dependencies.schema import YearRequest
+from app.dependencies.schema import YearRequest,StringRequest
  
 app = FastAPI()
 router = APIRouter()
@@ -18,5 +18,8 @@ async def check_prime(request: YearRequest):
  
 # Route for string split and join
 @router.post("/string-split-join/")
-async def string_split_join(request: YearRequest):
+async def string_split_join(request: StringRequest):
     return await split_and_join(request.string)
+
+#TODO import a csv file , pdf file and extract values from it and process the router
+#docker
